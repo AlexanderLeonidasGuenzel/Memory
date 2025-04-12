@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
     <link rel="icon" href="assets/img/memory/memory-icon.png" />
-    <link rel="stylesheet" href="styles/memory.css" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/menu.css" />
+    <link rel="stylesheet" href="styles/gamefield.css" />
   </head>
   <body>
     <header class="header">
@@ -22,9 +24,6 @@
             width="120"
             height="120"
           />
-          <figcaption class="screenOff">
-            Memory game icons created by Icongeek26 - Flaticon
-          </figcaption>
         </figure>
       </section>
       <h1 class="header__h1">Memory</h1>
@@ -53,13 +52,33 @@
         </div>
       </section>
 
+      <section class="submenu hidden" id="help-menu">
+        <h2>Help</h2>
+        <p>Flip two cards to find matching pairs. Match all pairs to win.</p>
+        <button class="menu-btn back-to-main">Back</button>
+      </section>
+
+      <section class="submenu hidden" id="options-menu">
+        <h2>Options</h2>
+        <p>Sound: [On/Off]<br />Theme: Classic</p>
+        <button class="menu-btn back-to-main">Back</button>
+      </section>
+
+      <section class="submenu hidden" id="credits-menu">
+        <h2>Credits</h2>
+        <p>
+          Made by You.<br />Icons from flaticon.com<br />Built with HTML, CSS &
+          JS
+        </p>
+        <button class="menu-btn back-to-main">Back</button>
+      </section>
+
       <article class="game-field" id="game-field">
         <!--dynamic cards-->
       </article>
     </main>
     <footer class="footer">
       <span>Memory &copy; Alexander Guenzel</span>
-      <span><a href="license.html">License Icons</a></span>
     </footer>
     <script src="scripts/memory.js"></script>
   </body>
