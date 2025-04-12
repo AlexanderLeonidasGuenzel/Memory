@@ -1,0 +1,354 @@
+/* FONTS: Delius + Nunito + Ribeye Marrow*/
+@import url("https://fonts.googleapis.com/css2?family=Delius&family=Nunito&family=Ribeye+Marrow&display=swap");
+:root {
+  --menu-border-radius: 0.5rem;
+
+  /* COLORS*/
+  --HEADER-COLOR: #2b2b2b;
+  --FOOTER-COLOR: #333333;
+  --BG-COLOR-TOP: rgb(56, 150, 231);
+  --BG-COLOR-BTM: aliceblue;
+  --BTN-NEWGAME: #e97187;
+  --BTN-HELP: #fcd47e;
+  --BTN-OPT: #61d3a5;
+  --BTN-CRE: #61acf2;
+  --MENU-BORDER-COLOR: white;
+
+  --TEXT-COLOR: white;
+  --LINK-COLOR: grey;
+
+  --CARD-FRONT-COLOR: white;
+  --CARD-BACK-COLOR: white;
+
+  --SHADOW-COLOR: rgba(0, 0, 0, 0.726);
+  --CARD-SHADOW-COLOR: rgba(0, 0, 0, 0.329);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  font-family: "Nunito", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  color: var(--TEXT-COLOR);
+}
+
+.header {
+  background-color: var(--HEADER-COLOR);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  gap: 1rem;
+}
+
+.header__h1 {
+  font-size: clamp(2em, 5vw, 3.5em);
+  font-family: "Ribeye Marrow", serif;
+}
+
+.main {
+  background: linear-gradient(
+    to top,
+    var(--BG-COLOR-BTM),
+    40%,
+    var(--BG-COLOR-TOP)
+  );
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1vw;
+  padding: 1vh;
+}
+
+.footer {
+  background-color: var(--FOOTER-COLOR);
+  height: clamp(70px, 7vh, 200px);
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(0.8em, 2vh, 1em);
+}
+
+.logo img {
+  width: 50px;
+  height: auto;
+  transform: rotateZ(45deg);
+  cursor: pointer;
+}
+
+.game-field {
+  display: none;
+  width: clamp(250px, 80vw, 700px);
+  height: clamp(250px, 80vw, 700px);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 1vh;
+}
+
+.screenOff {
+  display: none;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.card:active {
+  transform: scale(0.97);
+}
+
+.card .front,
+.card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 1px 1px 1px 2px var(--CARD-SHADOW-COLOR);
+  backface-visibility: hidden;
+  transition: transform 1s;
+}
+
+.card .front {
+  background-color: var(--CARD-FRONT-COLOR);
+  background-image: url("../assets/img/memory/memory-icon.png");
+}
+
+.card .back {
+  background-color: var(--CARD-BACK-COLOR);
+  transform: rotateY(180deg);
+}
+
+.card.flip .front {
+  transform: rotateY(180deg);
+}
+
+.card.flip .back {
+  transform: rotateY(0);
+}
+
+a:any-link {
+  color: var(--LINK-COLOR);
+}
+
+a {
+  text-decoration: none;
+}
+
+.game-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  gap: 20px;
+  border: 3px solid var(--MENU-BORDER-COLOR);
+  border-radius: var(--menu-border-radius);
+  margin: 0 auto;
+  width: clamp(250px, 80vw, 500px);
+  height: clamp(400px, 60vh, 700px);
+  background: linear-gradient(
+    150deg,
+    rgba(202, 69, 255, 0.144),
+    2%,
+    rgba(250, 250, 250, 0.5),
+    85%,
+    rgba(202, 69, 255, 0.144)
+  );
+  backdrop-filter: blur(20px);
+
+  animation: slideDown 1.5s ease-out forwards;
+}
+
+.game-menu__h2 {
+  font-family: "Ribeye Marrow", serif;
+  font-family: "Delius", cursive;
+  font-size: clamp(1em, 10vw, 48px);
+  text-shadow: 1px 1px 1px var(--SHADOW-COLOR);
+}
+
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 0.3rem;
+  width: 90%;
+  height: 100%;
+}
+
+.menu-options .menu-btn {
+  border: 2px solid var(--MENU-BORDER-COLOR);
+  width: 100%;
+  height: 10vh;
+  font-size: clamp(0.5em, 5vw, 36px);
+  text-shadow: 1px 1px 1px var(--SHADOW-COLOR);
+  color: var(--TEXT-COLOR);
+  cursor: pointer;
+  font-family: "Delius", cursive;
+}
+
+.menu-options .menu-btn:first-of-type {
+  border-top-left-radius: var(--menu-border-radius);
+  border-top-right-radius: var(--menu-border-radius);
+}
+
+.menu-options .menu-btn:last-of-type {
+  border-bottom-left-radius: var(--menu-border-radius);
+  border-bottom-right-radius: var(--menu-border-radius);
+}
+
+:is(#new-game, #help, #options, #credits):hover {
+  filter: saturate(1.5);
+  transform: scaleX(1.05);
+}
+
+:is(#new-game, #help, #options, #credits) {
+  backdrop-filter: brightness(0.95);
+}
+
+#new-game {
+  background-color: var(--BTN-NEWGAME);
+}
+#help {
+  background-color: var(--BTN-HELP);
+}
+#options {
+  background-color: var(--BTN-OPT);
+}
+#credits {
+  background-color: var(--BTN-CRE);
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes rotate {
+  0% {
+    transform: rotateZ(0deg) scaleZ(0.8);
+  }
+  50% {
+    transform: rotateZ(900deg) scale(1.2);
+  }
+  100% {
+    transform: rotateZ(-180deg) scale(1);
+  }
+}
+
+.game-menu.no-animation {
+  animation: none; /* Verhindert, dass die Animation erneut abgespielt wird */
+}
+
+.logo.animation {
+  animation: rotate 2s ease-in 2s forwards;
+}
+
+.info-text {
+  width: clamp(250px, 80vw, 500px);
+  padding: 10px;
+  font-size: clamp(0.8em, 3vw, 1.1rem);
+  text-align: justify;
+}
+
+#little-logo {
+  width: 1rem;
+  height: auto;
+  transform: translateY(2px) rotateZ(45deg);
+}
+
+/* MEDIA HORIZONTAL*/
+
+@media screen and (max-height: 424px) and (min-aspect-ratio: 7/4) {
+  .header {
+    padding: 3vh;
+  }
+  .header__h1 {
+    font-size: 1em;
+  }
+  .logo img {
+    width: 20px;
+    height: auto;
+  }
+
+  .main {
+    justify-content: flex-start;
+    gap: 1vh;
+  }
+
+  .footer {
+    display: none;
+  }
+
+  .info-text {
+    width: 50vw;
+    font-size: small;
+  }
+  .game-field {
+    width: clamp(250px, 75vh, 500px);
+    height: clamp(250px, 75vh, 500px);
+    margin: 5vh auto;
+  }
+  .game-menu {
+    width: 40vw;
+    height: auto;
+    font-size: small;
+    justify-content: flex-start;
+    gap: 1vh;
+    padding: 3vh 1vw;
+  }
+
+  .card .front,
+  .card .back {
+    box-shadow: 1px 1px 1px var(--SHADOW-COLOR);
+  }
+  .menu-options .menu-btn,
+  .game-menu__h2 {
+    font-size: 2vw;
+  }
+  .menu-options .menu-btn {
+    height: 50%;
+    border: 1px solid var(--MENU-BORDER-COLOR);
+    padding: 2.5vh;
+  }
+
+  .menu-options {
+    gap: 0.5vh;
+  }
+
+  .menu-options .menu-btn {
+    height: fit-content;
+  }
+}

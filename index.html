@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory</title>
+    <link rel="icon" href="assets/img/memory/memory-icon.png" />
+    <link rel="stylesheet" href="styles/memory.css" />
+  </head>
+  <body>
+    <header class="header">
+      <section
+        class="logo"
+        id="logo"
+        href="https://www.flaticon.com/free-icons/memory-game"
+        title="memory game icons"
+      >
+        <figure>
+          <img
+            src="assets/img/memory/memory-icon.png"
+            alt=""
+            width="120"
+            height="120"
+          />
+          <figcaption class="screenOff">
+            Memory game icons created by Icongeek26 - Flaticon
+          </figcaption>
+        </figure>
+      </section>
+      <h1 class="header__h1">Memory</h1>
+    </header>
+    <main class="main">
+      <div class="info-text" id="info-text">
+        <p>
+          Click the
+          <img
+            id="little-logo"
+            src="assets/img/memory/memory-icon.png"
+            alt="memory icon"
+            width="120"
+            height="120"
+          />
+          logo in-game to toggle the menu.
+        </p>
+      </div>
+      <section class="game-menu" id="game-menu">
+        <h2 class="game-menu__h2 nowrap">Main Menu</h2>
+        <div class="menu-options">
+          <button class="menu-btn" id="new-game">New Game</button>
+          <button class="menu-btn" id="help">Help</button>
+          <button class="menu-btn" id="options">Options</button>
+          <button class="menu-btn" id="credits">Credits</button>
+        </div>
+      </section>
+
+      <article class="game-field" id="game-field">
+        <!--dynamic cards-->
+      </article>
+    </main>
+    <footer class="footer">
+      <span>Memory &copy; Alexander Guenzel</span>
+      <span><a href="license.html">License Icons</a></span>
+    </footer>
+    <script src="scripts/memory.js"></script>
+  </body>
+</html>
