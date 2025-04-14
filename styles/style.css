@@ -31,8 +31,8 @@
 }
 
 html {
-  font-size: 1.2rem;
-  letter-spacing: 0.1em;
+  font-size: 1rem;
+  letter-spacing: 2px;
   font-family: "Nunito", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -43,7 +43,7 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--TEXT-COLOR);
 }
 
@@ -55,22 +55,24 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: clamp(1rem, 10vh, 1.5rem);
   gap: 1.2rem;
   background-color: var(--HEADER-COLOR);
 }
 
 .header__h1 {
-  font-size: clamp(2em, 5vw, 3.5em);
+  font-size: clamp(1.2rem, 5vh, 3rem);
   font-family: "Ribeye Marrow", serif;
 }
 
 .main {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   justify-content: center;
-  flex-grow: 1;
+  flex: 1 1 0;
+  padding: clamp(5px, 5vw, 50px) 0;
+  gap: clamp(10px, 5vh, 50px);
   background: linear-gradient(
     to top,
     var(--BG-COLOR-BTM),
@@ -81,7 +83,7 @@ img {
 
 .footer {
   background-color: var(--FOOTER-COLOR);
-  height: clamp(70px, 7vh, 200px);
+  height: clamp(100px, 10vh, 200px);
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -95,7 +97,7 @@ a:any-link {
 }
 
 .logo img {
-  width: 50px;
+  width: clamp(30px, 2vw, 50px);
   height: auto;
   transform: rotateZ(45deg);
   cursor: pointer;
@@ -107,13 +109,13 @@ a:any-link {
 }
 
 .info-text {
-  width: clamp(250px, 80vw, 500px);
   padding: 10px;
-  font-size: clamp(0.8em, 3vw, 1.1rem);
-  text-align: justify;
+  width: clamp(250px, 70vw, 500px);
+  font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
 .info-text #little-logo {
+  display: inline-block;
   width: 20px;
   height: auto;
   transform: translateY(5px) rotateZ(45deg);
@@ -128,31 +130,9 @@ a:any-link {
 }
 /* MEDIA HORIZONTAL*/
 
-@media screen and (max-height: 424px) and (min-aspect-ratio: 7/4) {
-  .header {
-    padding: 10px;
-  }
-  .header__h1 {
-    font-size: 1em;
-  }
-
-  .main {
-    justify-content: center;
-    padding-bottom: 30px;
-  }
-
+@media screen and (max-height: 500px), (max-width: 500px) {
   .footer {
     display: none;
-  }
-
-  .logo img {
-    width: 20px;
-    height: auto;
-  }
-
-  .info-text {
-    width: 50vw;
-    font-size: small;
   }
 }
 
@@ -178,14 +158,3 @@ a:any-link {
     transform: rotateZ(-720deg);
   }
 }
-/* @keyframes logo-spin {
-  0% {
-    transform: rotateZ(0deg) scaleZ(0.8);
-  }
-  50% {
-    transform: rotateZ(900deg) scale(1.2);
-  }
-  100% {
-    transform: rotateZ(-180deg) scale(1);
-  }
-} */
