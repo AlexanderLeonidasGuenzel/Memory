@@ -1,10 +1,11 @@
 .game-field {
+  --field-size: 650px;
   display: none;
-  width: clamp(250px, 80vw, 700px);
-  height: clamp(250px, 80vw, 700px);
+  width: clamp(250px, 80vw, var(--field-size));
+  height: clamp(250px, 80vw, var(--field-size));
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 1vh;
+  gap: min(1vw, 5px);
 }
 
 .card {
@@ -50,14 +51,10 @@
   transform: rotateY(0);
 }
 
-@media screen and (max-height: 424px) and (min-aspect-ratio: 7/4) {
+@media screen and (max-height: 700px) and (min-aspect-ratio: 7/4) {
   .game-field {
-    width: clamp(250px, 75vh, 500px);
-    height: clamp(250px, 75vh, 500px);
-    margin: 5vh auto;
-  }
-  .card .front,
-  .card .back {
-    box-shadow: 1px 1px 1px var(--SHADOW-COLOR);
+    --field-size: 450px;
+    width: clamp(250px, 80vh, var(--field-size));
+    height: clamp(250px, 80vh, var(--field-size));
   }
 }

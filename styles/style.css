@@ -5,7 +5,7 @@
 
   /* COLORS*/
   --HEADER-COLOR: #2b2b2b;
-  --FOOTER-COLOR: #333333;
+  --FOOTER-COLOR: #2b2b2b;
   --BG-COLOR-TOP: rgb(56, 150, 231);
   --BG-COLOR-BTM: aliceblue;
   --BTN-NEWGAME: #e97187;
@@ -43,8 +43,9 @@ body {
   display: flex;
   flex-direction: column;
   min-width: 300px;
-  min-height: 100dvh;
+  min-height: 100vh;
   color: var(--TEXT-COLOR);
+  overflow-x: hidden;
 }
 
 img {
@@ -72,7 +73,6 @@ img {
   justify-content: center;
   flex: 1 1 0;
   padding: clamp(5px, 5vw, 50px) 0;
-  gap: clamp(10px, 5vh, 50px);
   background: linear-gradient(
     to top,
     var(--BG-COLOR-BTM),
@@ -88,7 +88,7 @@ img {
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  font-size: clamp(0.8em, 2vh, 1em);
+  font-size: clamp(0.8em, 2vh, 1rem);
 }
 
 a:any-link {
@@ -109,9 +109,10 @@ a:any-link {
 }
 
 .info-text {
-  padding: 10px;
-  width: clamp(250px, 70vw, 500px);
+  padding: 1rem 0;
+  width: clamp(250px, 80vw, 500px);
   font-size: clamp(1rem, 3vw, 1.2rem);
+  line-height: 2;
 }
 
 .info-text #little-logo {
@@ -119,6 +120,7 @@ a:any-link {
   width: 20px;
   height: auto;
   transform: translateY(5px) rotateZ(45deg);
+  margin-inline: 0.5rem;
 }
 
 .nowrap {
