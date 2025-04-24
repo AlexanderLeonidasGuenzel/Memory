@@ -1,6 +1,7 @@
 :root {
   --MENU-BG-OUTER-COLOR: rgba(159, 84, 189, 0.295);
   --MENU-BG-INNER-COLOR: rgba(250, 250, 250, 0.411);
+  --menu-size: 500px;
 }
 
 .game-menu {
@@ -9,7 +10,7 @@
   align-items: center;
   padding: 5vh 1vw;
   gap: clamp(5px, 1vh, 20px);
-  width: clamp(300px, 70vw, 500px);
+  width: clamp(300px, 70vw, var(--menu-size));
   max-height: fit-content;
   background: linear-gradient(
     160deg,
@@ -79,4 +80,11 @@
 }
 #credits {
   background-color: var(--BTN-CRE);
+}
+
+@media screen and (max-height: 700px) and (min-aspect-ratio: 7/4) {
+  .game-menu {
+    --menu-size: 400px;
+    width: clamp(150px, 80vw, var(--menu-size));
+  }
 }
