@@ -23,6 +23,9 @@
   border: 3px solid var(--MENU-BORDER-COLOR);
   border-radius: var(--menu-border-radius);
   backdrop-filter: blur(20px);
+}
+
+.slide-animation {
   animation: slideDown 1.5s ease-out forwards;
 }
 

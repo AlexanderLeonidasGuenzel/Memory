@@ -1,3 +1,51 @@
+document.addEventListener("DOMContentLoaded", () => {
+  addLogoAnimation();
+});
+
+//Menu Logic
+// New Game Button
+document.getElementById("new-game").addEventListener("click", () => {
+  toggleMainMenu();
+  newGame();
+});
+
+function toggleMainMenu() {
+  const gameMenu = document.getElementById("game-menu");
+  const gameField = document.getElementById("game-field");
+  removeSlideAnimation();
+
+  if (gameMenu.style.display === "none") {
+    // Show main menu
+    gameField.style.display = "none";
+    gameMenu.style.display = "flex";
+  } else {
+    // Show game field
+    gameMenu.style.display = "none";
+    gameField.style.display = "grid";
+  }
+}
+
+function addLogoAnimation() {
+  const logo = document.getElementById("logo");
+  logo.classList.add("animation");
+}
+
+function hideInfoText() {
+  const infoText = document.getElementById("info-text");
+  infoText.style.display = "none";
+}
+
+function activateLogoMenu() {
+  const logoMenu = document.getElementById("logo");
+  logoMenu.addEventListener("click", toggleMainMenu);
+}
+
+function removeSlideAnimation() {
+  document.getElementById("game-menu").classList.remove("slide-animation");
+}
+
+// Game Logic
+
 let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockBoard = false;
@@ -15,40 +63,10 @@ const cardData = [
   { icon: "sit", image: "assets/img/memory/dog-sit.png" },
 ];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const newGameButton = document.getElementById("new-game");
-
-  const gameMenu = document.getElementById("game-menu");
-  const gameField = document.getElementById("game-field");
-
-  const logo = document.getElementById("logo");
-  logo.classList.add("animation");
-
-  newGameButton.addEventListener("click", () => {
-    gameMenu.style.display = "none";
-    gameField.style.display = "grid";
-
-    createGameBoard();
-
-    const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => card.addEventListener("click", flipCard));
-  });
-});
-
-function toggleMainMenu() {
-  const gameMenu = document.getElementById("game-menu");
-  const gameField = document.getElementById("game-field");
-  gameMenu.classList.add("no-animation");
-
-  if (gameMenu.style.display === "none") {
-    // Show main menu
-    gameField.style.display = "none";
-    gameMenu.style.display = "flex";
-  } else {
-    // Show game field
-    gameMenu.style.display = "none";
-    gameField.style.display = "grid";
-  }
+function newGame() {
+  createGameBoard();
+  const cards = document.querySelectorAll(".card");
+  cards.forEach((card) => card.addEventListener("click", flipCard));
 }
 
 function createGameBoard() {
@@ -69,11 +87,8 @@ function createGameBoard() {
     gameField.appendChild(cardElement);
   });
 
-  const logoMenu = document.getElementById("logo");
-  logoMenu.addEventListener("click", toggleMainMenu);
-
-  const infoText = document.getElementById("info-text");
-  infoText.style.display = "none";
+  activateLogoMenu();
+  hideInfoText();
 }
 
 function flipCard() {

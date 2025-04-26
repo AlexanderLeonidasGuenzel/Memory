@@ -120,7 +120,6 @@ a:any-link {
   width: 20px;
   height: auto;
   transform: translateY(5px) rotateZ(45deg);
-  margin-inline: 0.5rem;
 }
 
 .nowrap {
@@ -130,8 +129,8 @@ a:any-link {
 .hidden {
   display: none;
 }
-/* MEDIA HORIZONTAL*/
 
+/* Media Queries */
 @media screen and (max-height: 500px), (max-width: 500px) {
   .footer {
     display: none;
