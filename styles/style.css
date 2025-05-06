@@ -20,7 +20,7 @@
   --CARD-FRONT-COLOR: white;
   --CARD-BACK-COLOR: white;
 
-  --SHADOW-COLOR: rgba(0, 0, 0, 0.726);
+  --SHADOW-COLOR: rgba(49, 49, 49, 0.726);
   --CARD-SHADOW-COLOR: rgba(0, 0, 0, 0.329);
 }
 
@@ -89,6 +89,10 @@ img {
   justify-content: center;
   align-items: center;
   font-size: clamp(0.8em, 2vh, 1rem);
+}
+
+.button {
+  cursor: pointer;
 }
 
 a:any-link {

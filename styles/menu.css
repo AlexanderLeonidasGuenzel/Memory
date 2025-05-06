@@ -1,7 +1,9 @@
 :root {
   --MENU-BG-OUTER-COLOR: rgba(159, 84, 189, 0.295);
   --MENU-BG-INNER-COLOR: rgba(250, 250, 250, 0.411);
+  --BTN-COLOR: #e97187;
   --menu-size: 500px;
+  --BTN-BACK: white;
 }
 
 .game-menu {
@@ -9,7 +11,7 @@
   flex-direction: column;
   align-items: center;
   padding: 5vh 1vw;
-  gap: clamp(5px, 1vh, 20px);
+  gap: clamp(5px, 5vh, 1.5rem);
   width: clamp(300px, 70vw, var(--menu-size));
   max-height: fit-content;
   background: linear-gradient(
@@ -22,7 +24,10 @@
   );
   border: 3px solid var(--MENU-BORDER-COLOR);
   border-radius: var(--menu-border-radius);
-  backdrop-filter: blur(20px);
+}
+
+.game-menu * {
+  text-transform: uppercase;
 }
 
 .slide-animation {
@@ -33,7 +38,7 @@
   font-family: "Ribeye Marrow", serif;
   font-family: "Delius", cursive;
   font-size: clamp(1.2rem, 8vh, 32px);
-  text-shadow: 1px 1px 1px var(--SHADOW-COLOR);
+  text-shadow: 1px 0px 1px var(--SHADOW-COLOR);
 }
 
 .menu-options {
@@ -54,7 +59,6 @@
   color: var(--TEXT-COLOR);
   text-shadow: 1px 1px 2px var(--SHADOW-COLOR);
   border: 2px solid var(--MENU-BORDER-COLOR);
-  cursor: pointer;
 }
 
 .menu-options .menu-btn:first-of-type {
@@ -72,6 +76,44 @@
   transform: scaleX(1.05);
 }
 
+.submenu-card {
+  background-color: rgba(46, 46, 46, 0.11);
+  padding: 1.5rem;
+  border: 2px solid white;
+  border-radius: 1.5rem;
+  width: 80vw;
+  max-width: 400px;
+  display: flex;
+  flex-flow: column wrap;
+  gap: clamp(5px, 5vh, 50px);
+  backdrop-filter: blur(10px);
+  font-size: large;
+  line-height: 1.5;
+}
+
+.submenu-card h2 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.btn-back {
+  border: none;
+  border-radius: 0.4rem;
+  padding: 0.5rem 2rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: inherit;
+  color: var(--BTN-COLOR);
+  text-transform: uppercase;
+}
+
+.btn-back:hover {
+  --BTN-BACK: rgba(255, 255, 255, 0.856);
+  --BTN-COLOR: #ff4869;
+  background-color: var(--BTN-BACK);
+  color: var(--BTN-COLOR);
+}
+
 #new-game {
   background-color: var(--BTN-NEWGAME);
 }
@@ -83,6 +125,10 @@
 }
 #credits {
   background-color: var(--BTN-CRE);
+}
+
+#back {
+  background-color: var(--BTN-BACK);
 }
 
 @media screen and (max-height: 700px) and (min-aspect-ratio: 7/4) {

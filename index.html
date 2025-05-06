@@ -45,29 +45,38 @@
       <section class="game-menu slide-animation" id="game-menu">
         <h2 class="game-menu__h2 nowrap">Main Menu</h2>
         <div class="menu-options">
-          <button class="menu-btn" id="new-game">New Game</button>
-          <button class="menu-btn" id="help">Help</button>
-          <button class="menu-btn" id="options">Options</button>
-          <button class="menu-btn" id="credits">Credits</button>
+          <button class="menu-btn button" id="new-game">New Game</button>
+          <button class="menu-btn button" id="help">Help</button>
+          <button class="menu-btn button" id="options">Options</button>
+          <button class="menu-btn button" id="credits">Credits</button>
         </div>
       </section>
 
       <section class="submenu hidden" id="help-menu">
-        <h2>Help</h2>
-        <p>Flip two cards to find matching pairs. Match all pairs to win.</p>
+        <div class="submenu-card">
+          <h2>Help</h2>
+          <p>Flip two cards to find matching pairs. Match all pairs to win.</p>
+          <button class="btn-back button" id="back">Back</button>
+        </div>
       </section>
 
       <section class="submenu hidden" id="options-menu">
-        <h2>Options</h2>
-        <p>Sound: [On/Off]<br />Theme: Classic</p>
+        <div class="submenu-card">
+          <h2>Options</h2>
+          <p>Sound: [On/Off]<br />Theme: Classic</p>
+          <button class="btn-back button" id="back">Back</button>
+        </div>
       </section>
 
       <section class="submenu hidden" id="credits-menu">
-        <h2>Credits</h2>
-        <p>
-          Made by You.<br />Icons from flaticon.com<br />Built with HTML, CSS &
-          JS
-        </p>
+        <div class="submenu-card">
+          <h2>Credits</h2>
+          <p>
+            Made by <span class="nowrap">Alexander Guenzel</span>.<br />Icons
+            from flaticon.com<br />Built with HTML, CSS & JS
+          </p>
+          <button class="btn-back button" id="back">Back</button>
+        </div>
       </section>
 
       <article class="game-field" id="game-field">

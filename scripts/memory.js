@@ -3,16 +3,38 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Menu Logic
-// New Game Button
-document.getElementById("new-game").addEventListener("click", () => {
-  toggleMainMenu();
-  newGame();
+const menuBtn = document.querySelectorAll(".menu-btn");
+menuBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    let submenu = btn.id;
+    switch (submenu) {
+      case "new-game":
+        toggleMainMenu();
+        newGame();
+        break;
+      case "help":
+        toggleSubmenu(submenu + "-menu");
+        break;
+      case "options":
+        toggleSubmenu(submenu + "-menu");
+        break;
+      case "credits":
+        toggleSubmenu(submenu + "-menu");
+        break;
+    }
+  });
+});
+
+const backBtn = document.querySelectorAll(".btn-back");
+backBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    showMainMenu();
+  });
 });
 
 function toggleMainMenu() {
   const gameMenu = document.getElementById("game-menu");
   const gameField = document.getElementById("game-field");
-  removeSlideAnimation();
 
   if (gameMenu.style.display === "none") {
     // Show main menu
@@ -23,6 +45,35 @@ function toggleMainMenu() {
     gameMenu.style.display = "none";
     gameField.style.display = "grid";
   }
+
+  removeSlideAnimation();
+}
+
+function toggleSubmenu(menuId) {
+  hideInfoText();
+  hideMainMenu();
+  hideSubmenu();
+  showActualSubmenu(menuId);
+  console.log(menuId);
+}
+
+function hideMainMenu() {
+  document.getElementById("game-menu").style.display = "none";
+}
+
+function showMainMenu() {
+  hideSubmenu();
+  document.getElementById("game-menu").style.display = "flex";
+}
+
+function hideSubmenu() {
+  document.querySelectorAll(".submenu").forEach((menu) => {
+    menu.classList.add("hidden");
+  });
+}
+
+function showActualSubmenu(menuId) {
+  document.getElementById(menuId).classList.remove("hidden");
 }
 
 function addLogoAnimation() {
@@ -99,7 +150,6 @@ function flipCard() {
   if (!hasFlippedCard) {
     hasFlippedCard = true;
     firstCard = this;
-    console.log(this.dataset.icon);
     return;
   }
 
@@ -113,7 +163,6 @@ function checkForMatch() {
   if (firstCard.dataset.icon === secondCard.dataset.icon) {
     disableCards();
     found++;
-    console.log("found: " + found);
     if (found === pairs) {
       setTimeout(() => {
         window.alert("Well done!");
