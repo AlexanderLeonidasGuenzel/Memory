@@ -1,69 +1,51 @@
 document.addEventListener("DOMContentLoaded", () => {
   addLogoAnimation();
-});
+  document.getElementById("modal-close").addEventListener("click", () => {
+    hideModal();
+    toggleMainMenu();
+  });
 
-//Menu Logic
-const menuBtn = document.querySelectorAll(".menu-btn");
-menuBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    let submenu = btn.id;
-    switch (submenu) {
-      case "new-game":
-        toggleMainMenu();
-        newGame();
-        break;
-      case "help":
-        toggleSubmenu(submenu + "-menu");
-        break;
-      case "options":
-        toggleSubmenu(submenu + "-menu");
-        break;
-      case "credits":
-        toggleSubmenu(submenu + "-menu");
-        break;
-    }
+  //Menu Logic
+  const menuBtn = document.querySelectorAll(".menu-btn");
+  menuBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      let submenu = btn.id;
+      switch (submenu) {
+        case "new-game":
+          newGame();
+          toggleSubmenu(submenu);
+          break;
+        case "help":
+          toggleSubmenu(submenu + "-menu");
+          break;
+        case "options":
+          toggleSubmenu(submenu + "-menu");
+          break;
+        case "credits":
+          toggleSubmenu(submenu + "-menu");
+          break;
+      }
+    });
+  });
+
+  const backBtn = document.querySelectorAll(".btn-back");
+  backBtn.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      hideSubmenu();
+      showMainMenu();
+    });
   });
 });
-
-const backBtn = document.querySelectorAll(".btn-back");
-backBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    showMainMenu();
-  });
-});
-
-function toggleMainMenu() {
-  const gameMenu = document.getElementById("game-menu");
-  const gameField = document.getElementById("game-field");
-
-  if (gameMenu.style.display === "none") {
-    // Show main menu
-    gameField.style.display = "none";
-    gameMenu.style.display = "flex";
-  } else {
-    // Show game field
-    gameMenu.style.display = "none";
-    gameField.style.display = "grid";
-  }
-
-  removeSlideAnimation();
-}
 
 function toggleSubmenu(menuId) {
   hideInfoText();
   hideMainMenu();
   hideSubmenu();
-  showActualSubmenu(menuId);
-  console.log(menuId);
+  showSubmenu(menuId);
 }
 
-function hideMainMenu() {
-  document.getElementById("game-menu").style.display = "none";
-}
-
-function showMainMenu() {
-  hideSubmenu();
-  document.getElementById("game-menu").style.display = "flex";
+function showSubmenu(menuId) {
+  document.getElementById(menuId).classList.remove("hidden");
 }
 
 function hideSubmenu() {
@@ -72,8 +54,45 @@ function hideSubmenu() {
   });
 }
 
-function showActualSubmenu(menuId) {
-  document.getElementById(menuId).classList.remove("hidden");
+function toggleMainMenu() {
+  const gameMenu = document.getElementById("game-menu");
+
+  if (gameMenu.style.display === "none") {
+    // Show main menu
+    hideGameField();
+    showMainMenu();
+  } else {
+    // Show game field
+    hideMainMenu();
+    showGameField();
+  }
+
+  removeSlideAnimation();
+}
+
+function showGameField() {
+  document.getElementById("game-field").style.display = "grid";
+}
+
+function hideGameField() {
+  document.getElementById("game-field").style.display = "none";
+}
+
+function showMainMenu() {
+  document.getElementById("game-menu").style.display = "flex";
+}
+
+function hideMainMenu() {
+  document.getElementById("game-menu").style.display = "none";
+}
+
+function showModal() {
+  document.getElementById("win-modal").style.display = "flex";
+}
+
+function hideModal() {
+  // document.getElementById("win-modal").classList.add("hidden");
+  document.getElementById("win-modal").style.display = "none";
 }
 
 function addLogoAnimation() {
@@ -115,7 +134,10 @@ const cardData = [
 ];
 
 function newGame() {
+  found = 0;
+  resetBoard();
   createGameBoard();
+  showGameField();
   const cards = document.querySelectorAll(".card");
   cards.forEach((card) => card.addEventListener("click", flipCard));
 }
@@ -160,12 +182,16 @@ function flipCard() {
 }
 
 function checkForMatch() {
+  console.log("check for match");
+
   if (firstCard.dataset.icon === secondCard.dataset.icon) {
     disableCards();
     found++;
+    console.log("found: " + found);
     if (found === pairs) {
       setTimeout(() => {
-        window.alert("Well done!");
+        console.log("show modal");
+        showModal();
       }, 1500);
     }
   } else {
@@ -181,14 +207,12 @@ function unFlip() {
     secondCard.classList.remove("flip");
 
     resetBoard();
-  }, 1500);
+  }, 1000);
 }
 
 function disableCards() {
   firstCard.removeEventListener("click", flipCard);
   secondCard.removeEventListener("click", flipCard);
-
-  resetBoard();
 }
 
 function resetBoard() {

@@ -7,6 +7,7 @@
     <link rel="icon" href="assets/img/memory/memory-icon.png" />
     <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/menu.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
     <link rel="stylesheet" href="styles/gamefield.css" />
   </head>
   <body>
@@ -79,13 +80,21 @@
         </div>
       </section>
 
-      <article class="game-field" id="game-field">
+      <article class="game-field submenu hidden" id="game-field">
         <!--dynamic cards-->
       </article>
+
+      <div id="win-modal" class="modal">
+        <div class="modal-content">
+          <h2>You Won!</h2>
+          <p>Congratulations, you found all pairs!</p>
+          <button id="modal-close">Back to Menu</button>
+        </div>
+      </div>
     </main>
     <footer class="footer">
       <span>Memory &copy; Alexander Guenzel</span>
     </footer>
-    <script src="scripts/memory.js"></script>
+    <script src="scripts/script.js"></script>
   </body>
 </html>
